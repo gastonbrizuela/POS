@@ -6,6 +6,7 @@ import Tab from "@material-ui/core/Tab";
 import ClearIcon from "@material-ui/icons/Clear";
 import TabPanel from "./TabsPanel";
 import DocumentContainer from "../../document/DocumentContainer";
+import CreateCustomerContainer from "../../customer/create/CreateCustomerContainer"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -71,7 +72,9 @@ function TabsMenu(props) {
             "Reporting"
           ) : tab.type === "inicio" ? (
             "inicio"
-          ) : null}
+          ) : tab.type === "Nuevo cliente"?(
+            <CreateCustomerContainer/>
+          ):null}
         </TabPanel>
       ))}
     </div>

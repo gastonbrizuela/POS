@@ -10,7 +10,7 @@ function StatusConnectionContainer({ handleOnClickMenuButton }) {
     createButtonsAction("Facturacion"),
     createButtonsAction("Reporting"),
     createButtonsAction("Stock"),
-    createButtonsAction("Clientes"),
+    createButtonsAction("Nuevo cliente"),
     createButtonsAction("Libres"),
     createButtonsAction("CRM"),
     createButtonsAction("Asistencia Pedido"),
