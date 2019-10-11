@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { green } from '@material-ui/core/colors';
+import { green, red} from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import CheckIcon from '@material-ui/icons/Check';
@@ -13,6 +13,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
   },
+  errorMessage: {
+    color:red[700]
+  },
+
   wrapper: {
     margin: theme.spacing(1),
     position: 'relative',
@@ -59,15 +63,12 @@ export default function CircularIntegrationButton({isFinishForm, handleSubmit, l
           onClick={handleSubmit}
           disabled = {!(isFinishForm)}
         >
-          {successError?<p>error</p>:
+          {successError?<SaveIcon/>:
             success ? <CheckIcon /> : <SaveIcon/>}
         </Fab>
         {loading && <CircularProgress size={68} className={classes.fabProgress} />}
       </div>{successError?
-            <Typography component="p" color="secondary">{successError}</Typography>:
-            success ?
-            <Typography component="p">Se a guardado correctamente</Typography>:
-            <Typography component="p">Guardar</Typography>}
+            <Typography component="p" className =  {classes.errorMessage}>{successError}</Typography>: null}
             
     </div>
   );

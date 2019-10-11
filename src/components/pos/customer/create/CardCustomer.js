@@ -14,11 +14,12 @@ import {
   Zoom,
   CardHeader
 } from "@material-ui/core";
+import { green, blue,red} from '@material-ui/core/colors';
 import CircularIntegrationButton from '../../../commons/buttons/CircularIntegrationButton'
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: "60%",
+    width: "80%",
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: theme.spacing(1),
@@ -26,6 +27,22 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: 14
+  },
+  cardHeader: {
+  background: blue[900],
+  color:"white"
+  },
+  cardHeaderSuccess: {
+    background: green[700],
+    color:"white"
+    },
+  cardHeaderError: {
+      background: red[700],
+      color:"white"
+      },
+  cardContend: {
+    marginLeft:"3%",
+    marginRight:"3%"
   },
   pos: {
     marginBottom: 1
@@ -35,7 +52,6 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1)
   },
   blockButtons: {
-    display: "block"
   }
 }));
 
@@ -43,7 +59,10 @@ const CardCustomer = ({customer, isFinishForm, handleSubmit, success, loading, s
   const classes = useStyles();
   return (
     <Card className= {classes.card}>
-      <CardContent>
+      <CardHeader className = {success?classes.cardHeaderSuccess:successError?classes.cardHeaderError:classes.cardHeader} title={success?`${customer.name} ${customer.lastName} - ¡Se Ha Guardado Exitosamente!`
+      :successError?`${customer.name} ${customer.lastName} - ¡Se ha generado un error al guardar!`:
+      customer.name?`${customer.name} ${customer.lastName}`:"Nombre"}/>
+      <CardContent className = {classes.cardContend}>
         <Typography
           className={classes.title}
           color="textSecondary"
@@ -51,46 +70,43 @@ const CardCustomer = ({customer, isFinishForm, handleSubmit, success, loading, s
         >
           Detalle del cliente
         </Typography>
-        <Typography variant="h5" component="h2">
-        {`${customer.name} ${customer.lastName}`}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos}>
         {`Fecha de nacimiento: ${customer.date}`}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos}>
         {`Documento: ${customer.document}`}
         </Typography>
         <Divider className={classes.marginVertical} />
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos}>
         {`Calle: ${customer.street}`}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos}>
         {`Numero: ${customer.numberStreet}`}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos}>
         {`Provincia: ${customer.province}`}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos} >
         {`Localidad: ${customer.locality}`}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos}>
         {`Barrio: ${customer.neighborhood}`}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos} >
         {`Codigo Postal: ${customer.zipCode}`}
         </Typography>
         <Divider className={classes.marginVertical} />
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos}>
         {`Correo Electronico: ${customer.email}`}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography className={classes.pos}>
         {`Telefono: ${customer.areaCodePhone}-${customer.numberPhone}`}
         </Typography>
-      </CardContent>
-      <Divider className={classes.marginVertical} />
+        <Divider className={classes.marginVertical} />
         <CardActions className={classes.blockButtons}>
             <CircularIntegrationButton isFinishForm={isFinishForm} handleSubmit={handleSubmit} success = {success} loading = {loading} successError= {successError}/>
-      </CardActions>
+        </CardActions>
+      </CardContent>
     </Card>
   );
 };

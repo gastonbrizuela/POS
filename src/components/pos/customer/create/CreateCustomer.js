@@ -13,7 +13,9 @@ import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
+    width: '80%',
+    marginRight:'10%',
+    marginLeft:'10%'
 
   },
   button: {
@@ -35,8 +37,7 @@ export default function CreateCustomer(props) {
 
   
   return (
-    <div className={classes.root}>
-      <Grid container>
+      <Grid container className={classes.root}>
         <Grid item xs={4}>
           <Stepper activeStep={activeStep} orientation="vertical" className={classes.root}>
             {steps.map((label, index) => (
@@ -86,6 +87,5 @@ export default function CreateCustomer(props) {
           <CardCustomerContainer customer = {customer} isFinishForm={isFinishForm} handleSubmit= {handleSubmit} loading={loading} success= {success} successError={successError}></CardCustomerContainer>
         </Grid>
       </Grid>
-    </div>
   );
 }

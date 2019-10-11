@@ -118,9 +118,9 @@ export default function CreateCustomerContainer() {
       case 0:
         return <PersonalInformatioFormContainer handleChange={handleChange} customer ={customer} errors={errors}/>;
       case 1:
-        return <AdreessFormContainer handleChange={handleChange} customer ={customer} />;
+        return <AdreessFormContainer handleChange={handleChange} customer ={customer} errors={errors}/>;
       case 2:
-        return <ContactContainer handleChange={handleChange} customer ={customer}/>;
+        return <ContactContainer handleChange={handleChange} customer ={customer} errors={errors}/>;
       default:
         return 'Unknown step';
     }
